@@ -1,9 +1,24 @@
 package com.budgetify.budgetify_app.transaction;
 
+import jakarta.persistence.*;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+@Entity
+@Table
 public class Transaction {
+    @Id
+    @SequenceGenerator(
+            name = "transaction_sequence",
+            sequenceName = "transaction_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "transaction_sequence"
+    )
+
     private Long id;
     private BigDecimal amount;
     private String type;
